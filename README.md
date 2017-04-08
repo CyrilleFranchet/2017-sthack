@@ -1,18 +1,18 @@
 # Forensic - Le bus magique
 We download the challenge file which is named "LebusMagique_13378b8fc9585cb24dfade733f496d631e373cb0595706d4e6235734ee186802.pcapng".
-The command file confirms that this is a capture file.
+The file command confirms that this is a capture file.
 
-'''
+```
 cf@front-secu-linux:/mnt/hgfs/sas/challs/sthack-2017/forensic$ file LebusMagique_13378b8fc9585cb24dfade733f496d631e373cb0595706d4e6235734ee186802.pcapng
 LebusMagique_13378b8fc9585cb24dfade733f496d631e373cb0595706d4e6235734ee186802.pcapng: pcap-ng capture file - version 1.0
-'''
+```
 
 We can also check the SHA256 hash of the file.
 
-'''
+```
 cf@front-secu-linux:/mnt/hgfs/sas/challs/sthack-2017/forensic$ sha256sum LebusMagique_13378b8fc9585cb24dfade733f496d631e373cb0595706d4e6235734ee186802.pcapng
 13378b8fc9585cb24dfade733f496d631e373cb0595706d4e6235734ee186802  LebusMagique_13378b8fc9585cb24dfade733f496d631e373cb0595706d4e6235734ee186802.pcapng
-'''
+```
 
 We open the file with Wireshark to quickly see what is inside the capture.
 
@@ -40,8 +40,8 @@ By reading this document, we understand two things:
 * The Launchpad communicates with the PC
 * The PC can also communicates with the Launchpad
 Now we understand why we have two IDs, 1.4.1 and 1.4.2. The first one is used to send messages to the PC and the other one is used to received messages from the PC.
-In the chapter 4, we also learn that Launchpad Mini communicates which key has been pressed by sending the following message "90h, key, velocity”.
-It’s a good news because the capture file has a lot of these messages sent by the Launchpad Mini so it may be a good idea to extract the key value from the capture. We also learn that velocity has too special values: 7Fh when key is pressed and 00h when key is released.
+In the chapter 4, we also learn that Launchpad Mini communicates which key has been pressed by sending the following message "90h, *key*, *velocity*".
+It’s a good news because the capture file has a lot of these messages sent by the Launchpad Mini so it may be a good idea to extract the *key* value from the capture. We also learn that *velocity* has too special values: 7Fh when *key* is pressed and 00h when *key* is released.
 
 We can use Scapy to parse the PCAP file and extract the key value.
 
@@ -57,7 +57,7 @@ If we look again at the capture file, we can see that a list of key presses is a
 
 [[https://github.com/CyrilleFranchet/2017-sthack/blob/master/screen-7.png|alt=screen-7]]
 
-The document explains that the message "80h, Key, Velocity" is used to produce the Note Off message (sent from the PC to the Launchpad Mini).
+The document explains that the message "80h, *key*, *velocity*" is used to produce the Note Off message (sent from the PC to the Launchpad Mini).
 We can guess that this sequence is used to separate characters in the capture.
 So now to get the flag we need to reconstruct the matrix of Launchpad Mini and print it when we see the 80h sequence.
 The following script displays the matrix of each character (in a way that will make you forget the term Pythonic I guess…).
@@ -68,9 +68,9 @@ We get the following message:
 FLAGISSHA256OFSTHACK_17_YEAH!
 
 Let’s get the flag then.
-'''
+```
 cf@front-secu-linux:/mnt/hgfs/sas/challs/sthack-2017/forensic$ echo -n "STHACK_17_YEAH!" | sha256sum
 2ea0eec35b43437ef94ec456255a5597330f670a82ae8c392bf1660712b00950  -
-'''
+```
 
 I would like to thank @shoxxdj for this chall. Year after year he is still able to provide interesting PCAP files.
