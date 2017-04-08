@@ -45,7 +45,7 @@ It’s a good news because the capture file has a lot of these messages sent by 
 
 We can use Scapy to parse the PCAP file and extract the key value.
 
-[solve_launchpad-1.py](https://github.com/CyrilleFranchet/2017-sthack/blob/master/solve_launchpad_1.py)
+[solve_launchpad-1.py](https://github.com/CyrilleFranchet/2017-sthack/blob/master/solve_launchpad-1.py)
 
 This script dumps the key value and we can associate these values with the drum layout which is also included in the documentation.
 
@@ -62,7 +62,7 @@ We can guess that this sequence is used to separate characters in the capture.
 So now to get the flag we need to reconstruct the matrix of Launchpad Mini and print it when we see the 80h sequence.
 The following script displays the matrix of each character (in a way that will make you forget the term Pythonic I guess…).
 
-[solve_launchpad-2.py](https://github.com/CyrilleFranchet/2017-sthack/blob/master/solve_launchpad_2.py)
+[solve_launchpad-2.py](https://github.com/CyrilleFranchet/2017-sthack/blob/master/solve_launchpad-2.py)
 
 We get the following message:
 FLAGISSHA256OFSTHACK_17_YEAH!
