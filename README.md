@@ -16,7 +16,7 @@ cf@front-secu-linux:/mnt/hgfs/sas/challs/sthack-2017/forensic$ sha256sum LebusMa
 
 We open the file with Wireshark to quickly see what is inside the capture.
 
-[[https://github.com/CyrilleFranchet/2017-sthack/blob/master/screen-1.png|alt=screen-1]]
+![screen-1](/screen-1.png?raw=true)
 
 Okay, so one more time we have to deal with USB trafic captured by usbmon. If we check quickly the content we can see many URB_INTERRUPT packets between 1.41 and the host and between 1.4.2 and the host.
 
