@@ -36,9 +36,11 @@ The USB equipment:
 
 Fortunately, Focusrite-Novation has some good documents to help developers who want to build Application that can interact with the Launchpad Mini.
 http://lgnap.helpcomputer.org/wp-content/uploads/2014/09/launchpad-programmers-reference.pdf
+
 By reading this document, we understand two things:
 * The Launchpad communicates with the PC
 * The PC can also communicates with the Launchpad
+
 Now we understand why we have two IDs, 1.4.1 and 1.4.2. The first one is used to send messages to the PC and the other one is used to received messages from the PC.
 In the chapter 4, we also learn that Launchpad Mini communicates which key has been pressed by sending the following message "90h, *key*, *velocity*".
 It’s a good news because the capture file has a lot of these messages sent by the Launchpad Mini so it may be a good idea to extract the *key* value from the capture. We also learn that *velocity* has too special values: 7Fh when *key* is pressed and 00h when *key* is released.
