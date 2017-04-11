@@ -51,13 +51,13 @@ We can use Scapy to parse the PCAP file and extract the key value.
 
 This script dumps the key value and we can associate these values with the drum layout which is also included in the documentation.
 
-![screen-6](/screen-6.png?raw=true)
+![screen-6](/screen-7.png?raw=true)
 
 But for the moment we don’t see the point of the Launchpad Mini.
 At this point we elaborated many theories and only one was correct 😃 Someone is pressing buttons to draw a character on the Launchpad Mini.
 If we look again at the capture file, we can see that a list of key presses is always followed by a series of message coming from the PC and sent to the Launchpad Mini.
 
-![screen-7](/screen-7.png?raw=true)
+![screen-7](/screen-6.png?raw=true)
 
 The document explains that the message "80h, *key*, *velocity*" is used to produce the Note Off message (sent from the PC to the Launchpad Mini).
 We can guess that this sequence is used to separate characters in the capture.
